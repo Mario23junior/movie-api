@@ -1,7 +1,6 @@
 package com.api.movie.model;
 
-import java.util.Date;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,9 +14,10 @@ public class Movie {
 	private Long id;
 	private String nome;
 	private String imagem;
+	@Column(length = 5000)
 	private String descricao;
-	private Boolean favorit;
-	private Date dataLancamento;
+	private Boolean favorito;
+ 	private String dataLancamento;
 
 	public Movie() {
 		// TODO Auto-generated constructor stub
@@ -55,19 +55,19 @@ public class Movie {
 		this.descricao = descricao;
 	}
 
-	public Boolean getFavorit() {
-		return favorit;
+	public Boolean getFavorito() {
+		return favorito;
 	}
 
-	public void setFavorit(Boolean favorit) {
-		this.favorit = favorit;
+	public void setFavorito(Boolean favorito) {
+		this.favorito = favorito;
 	}
 
-	public Date getDataLancamento() {
+	public String getDataLancamento() {
 		return dataLancamento;
 	}
 
-	public void setDataLancamento(Date dataLancamento) {
+	public void setDataLancamento(String dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
 

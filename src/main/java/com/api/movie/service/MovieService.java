@@ -9,6 +9,8 @@ import com.api.movie.exceptions.ErroExceptionsObjectMessage;
 import com.api.movie.model.Movie;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,5 +35,16 @@ public class MovieService {
 		} catch (Exception e) {
 			throw new ErroExceptionsObjectMessage("Erro ao listar dados por favor tente novamente.");
 		}
+	}
+	
+	public ResponseEntity<MovieDTO> savestruturaObser (MovieDTO movieDto) {
+		Movie tele = bodysave(mapper.map(movieDto, Movie.class));
+		return ResponseEntity
+				  .status(HttpStatus.OK)
+				  .body(mapper.map(tele, MovieDTO.class));
+	}
+	
+	public Movie bodysave(Movie movie) {
+		return this.repository.save(movie);
 	}
 }

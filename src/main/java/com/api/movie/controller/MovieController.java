@@ -5,7 +5,10 @@ import java.util.List;
 import com.api.movie.dto.MovieDTO;
 import com.api.movie.service.MovieService;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,5 +25,10 @@ public class MovieController {
 	@GetMapping
 	public List<MovieDTO> listAll() throws Exception{
 		return service.listAll();
+	}
+	
+	@PostMapping
+	public ResponseEntity<MovieDTO>save(@RequestBody MovieDTO movieDto) {
+		return service.savestruturaObser(movieDto);
 	}
 }

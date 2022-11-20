@@ -1,16 +1,14 @@
 package com.api.movie.dto;
 
-import java.util.Date;
+public class MovieDTO {
 
- public class MovieDTO {
-
-  	private Long id;
+	private Long id;
 	private String nome;
 	private String imagem;
 	private String descricao;
-	private Boolean favorit;
-	private Date dataLancamento;
-	
+	private Boolean favorito;
+	private String dataLancamento;
+
 	public MovieDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -47,20 +45,22 @@ import java.util.Date;
 		this.descricao = descricao;
 	}
 
-	public Boolean getFavorit() {
-		return favorit;
+	public Boolean getFavorito() {
+		return favorito;
 	}
 
-	public void setFavorit(Boolean favorit) {
-		this.favorit = favorit;
+	public void setFavorito(Boolean favorito) {
+		this.favorito = favorito;
 	}
 
-	public Date getDataLancamento() {
+	public String getDataLancamento() {
 		return dataLancamento;
 	}
 
-	public void setDataLancamento(Date dataLancamento) {
+	public void setDataLancamento(String dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
+
+ 
 
 }
