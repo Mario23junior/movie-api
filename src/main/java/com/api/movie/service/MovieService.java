@@ -24,20 +24,20 @@ public class MovieService {
 		this.repository = repository;
 	}
 
-	public List<MovieDTO> listAll() throws Exception {
+	public List<MovieDTO> listAll() {
 		try {
 			List<Movie> list = repository.findAll();
 			return list
 					.stream()
 					.map(l -> mapper.map(l, MovieDTO.class))
-					.collect(Collectors.toList());
-
+ 					.collect(Collectors.toList());
 		} catch (Exception e) {
 			throw new ErroExceptionsObjectMessage("Erro ao listar dados por favor tente novamente.");
 		}
 	}
 	
 	public ResponseEntity<MovieDTO> savestruturaObser (MovieDTO movieDto) {
+		ValidValueDuplicate(movieDto);
 		Movie tele = bodysave(mapper.map(movieDto, Movie.class));
 		return ResponseEntity
 				  .status(HttpStatus.OK)
@@ -47,4 +47,39 @@ public class MovieService {
 	public Movie bodysave(Movie movie) {
 		return this.repository.save(movie);
 	}
+	
+	
+	public void ValidValueDuplicate(MovieDTO movieDto) {
+		Movie moviedto = mapper.map(movieDto, Movie.class);
+		Movie findmovie = repository.findByNome(movieDto.getNome());
+		if(findmovie != null && findmovie.getId() != moviedto.getId()) {
+			throw new ErroExceptionsObjectMessage("O filme "+ findmovie.getNome() 
+			+" Já esta cadastrado na base, tente inserir um outro filme.");
+		}
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
