@@ -75,6 +75,16 @@ public class MovieService {
 		}
 	}
 	
+	public ResponseEntity<MovieDTO> deletebase(Long id) {
+		Optional<Movie> findid = repository.findById(id);
+		if(findid.isPresent()) {
+			repository.delete(findid.get());
+			return new ResponseEntity<>(HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+	}
+	
 	
 	public void ValidValueDuplicate(MovieDTO movieDto) {
 		Movie moviedto = mapper.map(movieDto, Movie.class);

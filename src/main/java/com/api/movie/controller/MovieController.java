@@ -6,6 +6,7 @@ import com.api.movie.dto.MovieDTO;
 import com.api.movie.service.MovieService;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,5 +43,10 @@ public class MovieController {
 	@PutMapping("{id}")
 	public ResponseEntity<MovieDTO> update(@PathVariable Long id,@RequestBody MovieDTO movieDto) {
 		return service.dataUpdate(id, movieDto);
+	}
+	
+	@DeleteMapping("{id}")
+	public ResponseEntity<MovieDTO> delete(@PathVariable Long id) {
+		return service.deletebase(id);
 	}
 }
