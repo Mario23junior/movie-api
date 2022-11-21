@@ -5,10 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.api.movie.dto.GivenBaseDTO;
-import com.api.movie.dto.MovieDTO;
 import com.api.movie.exceptions.ErroExceptionsObjectMessage;
 import com.api.movie.model.GivenBase;
-import com.api.movie.model.Movie;
 import com.api.movie.repository.GivenBaseRepository;
 
 import org.modelmapper.ModelMapper;
@@ -61,4 +59,35 @@ public class GivenBaseService {
 		}	
 	}
 	
+	public ResponseEntity<GivenBaseDTO> dataUpdate(Long id, GivenBaseDTO givenBaseDto) {
+		Optional<GivenBase> givenbase = repository.findById(id);
+		if(givenbase.isPresent()) {
+			GivenBase given = givenbase.get();
+			given.setDirecao(givenBaseDto.getDirecao());
+			given.setEmissora(givenBaseDto.getEmissora());
+			given.setTipo(givenBaseDto.getTipo());
+			given.setUrlTrilerVideo(givenBaseDto.getUrlTrilerVideo());
+			repository.save(given);
+			return ResponseEntity.ok(mapper.map(given, GivenBaseDTO.class));	
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
