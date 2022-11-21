@@ -1,6 +1,10 @@
 package com.api.movie.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.api.movie.dto.GivenBaseDTO;
+import com.api.movie.exceptions.ErroExceptionsObjectMessage;
 import com.api.movie.model.GivenBase;
 import com.api.movie.repository.GivenBaseRepository;
 
@@ -31,4 +35,17 @@ public class GivenBaseService {
 	public GivenBase bodysave(GivenBase givenBase) {
 		return this.repository.save(givenBase);
 	}
+	
+	public List<GivenBaseDTO> listAll() {
+		try {
+			List<GivenBase> list = repository.findAll();
+			return list
+					.stream()
+					.map(l -> mapper.map(l, GivenBaseDTO.class))
+ 					.collect(Collectors.toList());
+		} catch (Exception e) {
+			throw new ErroExceptionsObjectMessage("Informações não encontradas por favor tente novamente.");
+		}
+	}
+	
 }
