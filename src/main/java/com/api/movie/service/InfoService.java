@@ -1,6 +1,7 @@
 package com.api.movie.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.api.movie.dto.InfoDTO;
@@ -46,6 +47,21 @@ public class InfoService {
  					.collect(Collectors.toList());
 		} catch (Exception e) {
 			throw new ErroExceptionsObjectMessage("Erro ao listar informações por favor tente novamente.");
+		}
+	}
+	
+	public ResponseEntity<InfoDTO> dataUpdate(Long id, InfoDTO infodto) {
+		Optional<Info> infodata = repository.findById(id);
+		if(infodata.isPresent()) {
+			Info info = infodata.get();
+			info.setAno(infodto.getAno());
+			info.setAutor(infodto.getAutor());
+			info.setElenco(infodto.getElenco());
+			info.setGenero(infodto.getGenero());
+			repository.save(info);
+			return ResponseEntity.ok(mapper.map(info, InfoDTO.class));	
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	}
 

@@ -7,7 +7,9 @@ import com.api.movie.service.InfoService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,9 +28,14 @@ public class InfoController {
 	public ResponseEntity<InfoDTO> save(@RequestBody InfoDTO infoDto) {
 		return service.SaveInfo(infoDto);
 	}
-	
+
 	@GetMapping
 	public List<InfoDTO> listAll() {
 		return service.listAll();
+	}
+
+	@PutMapping("{id}")
+	public ResponseEntity<InfoDTO> update(@PathVariable Long id, @RequestBody InfoDTO infodto) {
+		return service.dataUpdate(id, infodto);
 	}
 }
