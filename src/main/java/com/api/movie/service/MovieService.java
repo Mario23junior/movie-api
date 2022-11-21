@@ -1,6 +1,7 @@
 package com.api.movie.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.api.movie.MovieRepository;
@@ -46,6 +47,15 @@ public class MovieService {
 	
 	public Movie bodysave(Movie movie) {
 		return this.repository.save(movie);
+	}
+	
+	public ResponseEntity<MovieDTO> listId(Long id) {
+		Optional<Movie> listId = repository.findById(id);
+		if(listId.isPresent()) {
+			return ResponseEntity.ok(mapper.map(listId.get(), MovieDTO.class));
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}	
 	}
 	
 	
