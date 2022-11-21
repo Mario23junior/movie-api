@@ -1,11 +1,14 @@
 package com.api.movie.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.api.movie.dto.GivenBaseDTO;
+import com.api.movie.dto.MovieDTO;
 import com.api.movie.exceptions.ErroExceptionsObjectMessage;
 import com.api.movie.model.GivenBase;
+import com.api.movie.model.Movie;
 import com.api.movie.repository.GivenBaseRepository;
 
 import org.modelmapper.ModelMapper;
@@ -46,6 +49,16 @@ public class GivenBaseService {
 		} catch (Exception e) {
 			throw new ErroExceptionsObjectMessage("Informações não encontradas por favor tente novamente.");
 		}
+	}
+	
+	
+	public ResponseEntity<GivenBaseDTO> listId(Long id) {
+		Optional<GivenBase> listId = repository.findById(id);
+		if(listId.isPresent()) {
+			return ResponseEntity.ok(mapper.map(listId.get(), GivenBaseDTO.class));
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}	
 	}
 	
 }
