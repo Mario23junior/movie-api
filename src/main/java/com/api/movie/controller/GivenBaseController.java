@@ -4,6 +4,7 @@ import com.api.movie.dto.GivenBaseDTO;
 import com.api.movie.service.GivenBaseService;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,11 @@ public class GivenBaseController {
 	@PutMapping("{id}")
 	public ResponseEntity<GivenBaseDTO> listId(@PathVariable Long id,@RequestBody GivenBaseDTO givenBaseDto) {
 		return service.dataUpdate(id, givenBaseDto);
+	}
+	
+	@DeleteMapping("{id}")
+	public ResponseEntity<GivenBaseDTO> delete(@PathVariable Long id) {
+		return service.deletebase(id);
 	}
 	
 	

@@ -74,7 +74,16 @@ public class GivenBaseService {
 		}
 	}
 	
-	
+
+public ResponseEntity<GivenBaseDTO> deletebase(Long id) {
+	Optional<GivenBase> findid = repository.findById(id);
+	if(findid.isPresent()) {
+		repository.delete(findid.get());
+		return new ResponseEntity<>(HttpStatus.OK);
+	}else {
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+}
 	
 }
 
