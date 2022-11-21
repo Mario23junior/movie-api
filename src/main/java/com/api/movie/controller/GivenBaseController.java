@@ -1,5 +1,7 @@
 package com.api.movie.controller;
 
+import java.util.List;
+
 import com.api.movie.dto.GivenBaseDTO;
 import com.api.movie.service.GivenBaseService;
 
@@ -32,6 +34,11 @@ public class GivenBaseController {
 	@GetMapping("{id}")
 	public ResponseEntity<GivenBaseDTO> listId(@PathVariable Long id) {
 		return service.listId(id);
+	}
+	
+	@GetMapping()
+	public List<GivenBaseDTO> listAll() {
+		return service.listAll();
 	}
 	
 	
