@@ -58,7 +58,6 @@ public class MovieService {
 		}	
 	}
 	
-
 	public ResponseEntity<MovieDTO> dataUpdate(Long id, MovieDTO movieDto) {
 		Optional<Movie> moviedata = repository.findById(id);
 		if(moviedata.isPresent()) {

@@ -24,27 +24,27 @@ public class MovieController {
 	public MovieController(MovieService service) {
 		this.service = service;
 	}
-	
+
 	@GetMapping
-	public List<MovieDTO> listAll() throws Exception{
+	public List<MovieDTO> listAll() throws Exception {
 		return service.listAll();
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<MovieDTO>save(@RequestBody MovieDTO movieDto) {
+	public ResponseEntity<MovieDTO> save(@RequestBody MovieDTO movieDto) {
 		return service.savestruturaObser(movieDto);
 	}
-	
+
 	@GetMapping("{id}")
 	public ResponseEntity<MovieDTO> listId(@PathVariable Long id) {
 		return service.listId(id);
 	}
-	
+
 	@PutMapping("{id}")
-	public ResponseEntity<MovieDTO> update(@PathVariable Long id,@RequestBody MovieDTO movieDto) {
+	public ResponseEntity<MovieDTO> update(@PathVariable Long id, @RequestBody MovieDTO movieDto) {
 		return service.dataUpdate(id, movieDto);
 	}
-	
+
 	@DeleteMapping("{id}")
 	public ResponseEntity<MovieDTO> delete(@PathVariable Long id) {
 		return service.deletebase(id);

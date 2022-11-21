@@ -36,6 +36,7 @@ public class GivenBaseController {
 		return service.listId(id);
 	}
 	
+	
 	@GetMapping()
 	public List<GivenBaseDTO> listAll() {
 		return service.listAll();
