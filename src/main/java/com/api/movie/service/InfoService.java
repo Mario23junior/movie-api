@@ -1,5 +1,8 @@
 package com.api.movie.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.api.movie.dto.InfoDTO;
 import com.api.movie.exceptions.ErroExceptionsObjectMessage;
 import com.api.movie.model.Info;
@@ -34,6 +37,17 @@ public class InfoService {
 		return this.repository.save(info);
 	}
 	
+	public List<InfoDTO> listAll() {
+		try {
+			List<Info> list = repository.findAll();
+			return list
+					.stream()
+					.map(l -> mapper.map(l, InfoDTO.class))
+ 					.collect(Collectors.toList());
+		} catch (Exception e) {
+			throw new ErroExceptionsObjectMessage("Erro ao listar informações por favor tente novamente.");
+		}
+	}
 
 	public void ValidValueDuplicate(InfoDTO infoDto) {
  		Info infodto = mapper.map(infoDto, Info.class);
