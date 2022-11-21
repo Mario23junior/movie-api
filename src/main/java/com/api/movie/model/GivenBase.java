@@ -13,7 +13,7 @@ public class GivenBase {
 	private Long id;
 	private String emissora;
 	private String urlTrilerVideo;
-	private String servicos;
+	private String direcao;
 	private String tipo;
 
 	public GivenBase() {
@@ -44,12 +44,14 @@ public class GivenBase {
 		this.urlTrilerVideo = urlTrilerVideo;
 	}
 
-	public String getServicos() {
-		return servicos;
+	 
+
+	public String getDirecao() {
+		return direcao;
 	}
 
-	public void setServicos(String servicos) {
-		this.servicos = servicos;
+	public void setDirecao(String direcao) {
+		this.direcao = direcao;
 	}
 
 	public String getTipo() {
