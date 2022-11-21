@@ -2,9 +2,9 @@ package com.api.movie.utils;
 
 import java.util.Arrays;
 
-import com.api.movie.MovieRepository;
 import com.api.movie.dto.MovieDTO;
 import com.api.movie.model.Movie;
+import com.api.movie.repository.MovieRepository;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
