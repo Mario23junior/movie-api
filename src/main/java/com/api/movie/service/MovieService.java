@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.api.movie.MovieRepository;
 import com.api.movie.dto.MovieDTO;
 import com.api.movie.exceptions.ErroExceptionsObjectMessage;
 import com.api.movie.model.Movie;
+import com.api.movie.repository.MovieRepository;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
