@@ -58,6 +58,23 @@ public class MovieService {
 		}	
 	}
 	
+
+	public ResponseEntity<MovieDTO> dataUpdate(Long id, MovieDTO movieDto) {
+		Optional<Movie> moviedata = repository.findById(id);
+		if(moviedata.isPresent()) {
+			Movie movie = moviedata.get();
+ 			movie.setNome(movieDto.getNome());
+ 			movie.setDescricao(movieDto.getDescricao());
+ 			movie.setFavorito(movieDto.getFavorito());
+ 			movie.setImagem(movieDto.getImagem());
+ 			movie.setDataLancamento(movieDto.getDataLancamento());
+			repository.save(movie);
+			return ResponseEntity.ok(mapper.map(movie, MovieDTO.class));	
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+	}
+	
 	
 	public void ValidValueDuplicate(MovieDTO movieDto) {
 		Movie moviedto = mapper.map(movieDto, Movie.class);
