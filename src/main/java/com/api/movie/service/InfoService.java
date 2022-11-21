@@ -64,6 +64,17 @@ public class InfoService {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	}
+	
+	public ResponseEntity<InfoDTO> deletebase(Long id) {
+		Optional<Info> findid = repository.findById(id);
+		if(findid.isPresent()) {
+			repository.delete(findid.get());
+			return new ResponseEntity<>(HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+	}
+	
 
 	public void ValidValueDuplicate(InfoDTO infoDto) {
  		Info infodto = mapper.map(infoDto, Info.class);
