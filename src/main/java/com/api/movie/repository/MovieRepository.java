@@ -1,4 +1,4 @@
-package com.api.movie;
+package com.api.movie.repository;
 
 import com.api.movie.model.Movie;
 
