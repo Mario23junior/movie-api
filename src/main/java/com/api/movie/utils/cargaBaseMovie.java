@@ -36,7 +36,7 @@ public class cargaBaseMovie {
 		// ######################################################################################
 		MovieDTO m1 = new MovieDTO();
 		m1.setNome("Rango");
-		m1.setImagem("https://mb.web.sapo.io/f711101a8d3b5c895bfef0cc3dcb44e4909077d8.jpg");
+		m1.setImagem("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSTtmLfwxfgjuexYD4IBRvrF6Lzgs-jAeTLU8GKTFzES6Jm8S1s");
 		m1.setDataLancamento("09-03-2022");
 		m1.setFavorito(false);
 		m1.setDescricao(
@@ -79,7 +79,7 @@ public class cargaBaseMovie {
 		m3.setNome("A Chegada");
 		m3.setImagem("https://2.bp.blogspot.com/-H2Ga0r9DewQ/WDxsJ26F9yI/AAAAAAAAVcQ/2TwT-OB5eC0gl1Wi-epoHLbtZnKzi8N7ACLcB/s1600/A%2BChegada%2B01.jpg");
 		m3.setDataLancamento("22-11-2016");
-		m3.setFavorito(false);
+		m3.setFavorito(true);
 		m3.setDescricao("Naves alienígenas chegaram às principais cidades do mundo. Com a intenção de se comunicar com os visitantes, uma linguista e um militar são chamados para decifrar as estranhas mensagens dos visitantes.");
 		InfoDTO i3 = new InfoDTO();
 		i3.setAno("2016");
@@ -104,7 +104,7 @@ public class cargaBaseMovie {
 //		
 		MovieDTO m4 = new MovieDTO();
 		m4.setNome("Interestelar");
-		m4.setImagem("https://i.pinimg.com/originals/11/1c/5c/111c5c9ad99661af2d80e38948cf29d8.jpg");
+		m4.setImagem("https://m.media-amazon.com/images/I/71qzTzxzoCL.jpg");
 		m4.setDataLancamento("06-11-2014");
 		m4.setFavorito(false);
 		m4.setDescricao("As reservas naturais da Terra estão chegando ao fim e um grupo de astronautas recebe a missão de verificar possíveis planetas para receberem a população mundial, possibilitando a continuação da espécie. Cooper é chamado para liderar o grupo e aceita a missão sabendo que pode nunca mais ver os filhos");
