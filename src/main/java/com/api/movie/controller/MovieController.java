@@ -8,6 +8,7 @@ import com.api.movie.service.MovieService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -38,6 +39,11 @@ public class MovieController {
 	@GetMapping("{id}")
 	public ResponseEntity<MovieDTO> listId(@PathVariable Long id) {
 		return service.listId(id);
+	}
+	
+	@PatchMapping("{id}/favorito")
+	public void favorito(@PathVariable Long id) {
+		service.favorito(id);
 	}
 
 	@PutMapping("{id}")

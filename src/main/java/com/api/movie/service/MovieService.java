@@ -84,6 +84,14 @@ public class MovieService {
 		}
 	}
 	
+	public void favorito(Long id) {
+		Optional<Movie> listId = repository.findById(id);
+		 listId.ifPresent( favor -> {
+		 boolean favorito = favor.getFavorito() == Boolean.TRUE;
+		 favor.setFavorito(!favorito);
+		 repository.save(favor);
+    	});
+ 	}
 	
 	public void ValidValueDuplicate(MovieDTO movieDto) {
 		Movie moviedto = mapper.map(movieDto, Movie.class);
