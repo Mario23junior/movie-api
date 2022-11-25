@@ -75,6 +75,16 @@ public class InfoService {
 		}
 	}
 	
+	public ResponseEntity<InfoDTO> listIdInfo(Long id) {
+		Optional<Info> listId = repository.findById(id);
+		if(listId.isPresent()) {
+			return ResponseEntity.ok(mapper.map(listId.get(), InfoDTO.class));
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}	
+	}
+	
+	
 
 	public void ValidValueDuplicate(InfoDTO infoDto) {
  		Info infodto = mapper.map(infoDto, Info.class);

@@ -6,6 +6,7 @@ import com.api.movie.dto.InfoDTO;
 import com.api.movie.service.InfoService;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/info/")
 public class InfoController {
 
@@ -33,6 +35,11 @@ public class InfoController {
 	@GetMapping
 	public List<InfoDTO> listAll() {
 		return service.listAll();
+	}
+	
+	@GetMapping("{id}")
+	public ResponseEntity<InfoDTO> listIdInfo(@PathVariable Long id) {
+		return service.listIdInfo(id);
 	}
 
 	@PutMapping("{id}")
