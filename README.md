@@ -1,4 +1,4 @@
-<p align="center"><img src="doc/logo.gif"></p>
+<p align="center"><img src="doc/log.gif"></p>
 
 <h1 align="center">Movie API Rest</h1>
 
