@@ -58,6 +58,16 @@ public class MovieService {
 		}	
 	}
 	
+	public ResponseEntity<MovieDTO> listMovieName(String nameMovie) {
+		Optional<Movie> listmovie = repository.findByNomeContainingIgnoreCase(nameMovie);
+		if(listmovie.isPresent()) {
+			return ResponseEntity.ok(mapper.map(listmovie.get(), MovieDTO.class));
+		} else {
+			throw new ErroExceptionsObjectMessage("O filme "+ nameMovie 
+			+" não foi encontrado ");
+		}	
+	}
+	
 	public ResponseEntity<MovieDTO> dataUpdate(Long id, MovieDTO movieDto) {
 		Optional<Movie> moviedata = repository.findById(id);
 		if(moviedata.isPresent()) {

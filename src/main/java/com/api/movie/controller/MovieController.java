@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -41,6 +42,11 @@ public class MovieController {
 	@GetMapping("{id}")
 	public ResponseEntity<MovieDTO> listId(@PathVariable Long id) {
 		return service.listId(id);
+	}
+	
+	@GetMapping("name")
+	public ResponseEntity<MovieDTO> listName(@RequestParam String moviename) {
+		return service.listMovieName(moviename);
 	}
 	
 	@PatchMapping("{id}/favorito")
